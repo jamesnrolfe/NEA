@@ -46,6 +46,5 @@ export const createRecommendations = (correlations, userReviews) => {
 			recommendations.push([correlations[i][1], score]); // add the new recommendation to our list
 		}
 	}
-	return [recommendations, mostCorrelatedMovie]; // return an array containing our required values
-	// just how JS returns multiple values
+	return [recommendations, mostCorrelatedMovie]; // return an tuple containing our required values
 };
