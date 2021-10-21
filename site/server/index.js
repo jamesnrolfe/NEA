@@ -10,6 +10,13 @@ app.use(express.urlencoded({ extended: true })); // recognise incoming requests 
 
 const port = 3001; // what port are we using (doesn't really matter, but 3001 is nice since react generally runs on 3000)
 
+// apps:
+const users = require("./routes/users");
+app.use("/api/users", users);
+
+const reviewsAndRatings = require("./routes/reviews_and_ratings");
+app.use("/api/reviews_and_ratings", reviewsAndRatings);
+
 app.listen(port, () => {
 	console.log(`Running on port ${port}`); // when connected, output a success message with the port number
 });
