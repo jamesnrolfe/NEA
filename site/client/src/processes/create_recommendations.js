@@ -29,10 +29,8 @@ export const createRecommendations = (correlations, userReviews) => {
 				recommendations += score; // then simply sum the scores
 				updateFlag = true; // since we have updated, change the updateFlag
 				if (recommendations[k][1] > mostCorrelatedMovie[1]) {
-					// if the new score is
-					// the most correlated...
-					mostCorrelatedMovie = [recommendations[k][0], recommendations[k][1]]; // ... update our
-					// most correlated score
+					// if the new score is the most correlated...
+					mostCorrelatedMovie = [recommendations[k][0], recommendations[k][1]]; // ... update our most correlated score
 				}
 				break; // no need to continue
 			}

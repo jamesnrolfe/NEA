@@ -17,6 +17,9 @@ app.use("/api/users", users);
 const reviewsAndRatings = require("./routes/reviews_and_ratings");
 app.use("/api/reviews_and_ratings", reviewsAndRatings);
 
+const movieDetials = require("./routes/movie_details");
+app.use("/api/movie_details", movieDetials);
+
 app.listen(port, () => {
 	console.log(`Running on port ${port}`); // when connected, output a success message with the port number
 });
