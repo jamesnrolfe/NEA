@@ -14,4 +14,8 @@ router.use("/remove", removeUser);
 const updateUser = require("./update_user");
 router.use("/update", updateUser);
 
+// getting users
+const getUser = require("./get_user");
+router.use("/get", getUser);
+
 module.exports = router;
