@@ -13,4 +13,8 @@ router.use("/remove", removeReview);
 const editReview = require("./update_review");
 router.use("/update", editReview);
 
+// getting
+const getReviews = require("./get_reviews");
+router.use("/get", getReviews);
+
 module.exports = router;

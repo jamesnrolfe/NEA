@@ -15,7 +15,7 @@ const updateUser = require("./update_user");
 router.use("/update", updateUser);
 
 // getting users
-const getUser = require("./get_user");
+const getUser = require("./get_users");
 router.use("/get", getUser);
 
 module.exports = router;

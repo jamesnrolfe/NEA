@@ -20,6 +20,9 @@ app.use("/api/reviews_and_ratings", reviewsAndRatings);
 const movieDetials = require("./routes/movie_details");
 app.use("/api/movie_details", movieDetials);
 
+const watchlists = require("./routes/watchlists");
+app.use("/api/watchlists", watchlists);
+
 app.listen(port, () => {
 	console.log(`Running on port ${port}`); // when connected, output a success message with the port number
 });
