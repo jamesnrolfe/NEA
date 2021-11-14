@@ -23,6 +23,9 @@ app.use("/api/movie_details", movieDetials);
 const watchlists = require("./routes/watchlists");
 app.use("/api/watchlists", watchlists);
 
+const other = require("./routes/other");
+app.use("/api/other", other);
+
 app.listen(port, () => {
 	console.log(`Running on port ${port}`); // when connected, output a success message with the port number
 });
