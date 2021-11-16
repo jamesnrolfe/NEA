@@ -1,12 +1,20 @@
 import ReactDOM from "react-dom";
-import ControlBoard from "./components/control_board";
+
+// router tools
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// pages
+import Homepage from "./pages/homepage";
 
 const App = () => {
 	// default/base function component
 	return (
-		<>
-			<ControlBoard />
-		</>
+		<Router>
+			<Routes>
+				<Route path="/" exact component={Homepage} />
+				{/* home page here on the default url */}
+			</Routes>
+		</Router>
 	);
 };
 
