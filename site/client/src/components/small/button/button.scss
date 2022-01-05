@@ -1,0 +1,74 @@
+button.Button {
+	border: none; // removing css defaults
+	outline: none;
+	color: white;
+	text-transform: uppercase; // all text will be uppercase
+	font-weight: 700; // bold font
+	font-style: 1em;
+	letter-spacing: 0.05em;
+	position: relative;
+	z-index: 1; // on top of background items
+	cursor: pointer; // swap cursor on hover
+	background: none;
+	text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45); // give a sort of 3d effect
+	transition: 0.5s all ease; // smooth all the changes
+	&:before,
+	&:after {
+		position: absolute; // be secure in itself
+		top: 50%;
+		left: 50%;
+		border-radius: 10em;
+		transform: translateX(-50%) translateY(-50%); // trick to sort dimensions
+		width: 105%;
+		height: 105%;
+		content: "";
+		z-index: -2;
+		background-size: 400% 400%;
+		background: linear-gradient(
+			60deg,
+			var(--button-muted-1),
+			var(--button-muted-2)
+		); // give it a gradient
+		// which I think looks a bit nicer than a plain button
+	}
+	&:before {
+		filter: blur(4px);
+		transition: all 0.25s ease;
+		animation: pulse 10s infinite ease;
+	}
+	&:after {
+		filter: blur(0.3px);
+	}
+	&:hover:before {
+		width: 107%;
+		height: 115%; // change size on hover
+	}
+	&.disabled {
+		opacity: 0.2; // if button cannot be pressed, dim it and don't run click events or change cursor
+		pointer-events: none;
+	}
+
+	// sizes
+	&.small {
+		padding: 0.5em;
+	}
+	&.medium {
+		padding: 0.8em;
+	}
+	&.large {
+		padding: 1em;
+	}
+	&.accent {
+		color: white;
+	}
+
+	&.accent:before,
+	&.accent:after {
+		background: linear-gradient(
+			60deg,
+			var(--button-accent-1),
+			var(--button-accent-2),
+			var(--button-accent-3)
+		); // an accented button
+	}
+}
