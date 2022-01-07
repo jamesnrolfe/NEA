@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const Sidebar = (props) => {
 	return (
 		<div className={props.className}>
-			{" "}
 			{/* doesn't really matter but this probably doesn't need a className prop since there is only ever
     one of these and it will always have the same className, but it doesn't matter */}
 			<ul className="sidebar-list">

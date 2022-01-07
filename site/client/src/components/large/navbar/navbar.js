@@ -54,15 +54,13 @@ const Navbar = (props) => {
 				query="(min-width: 600px)"
 				render={() => (
 					<ul className="NavLinks">
-						{" "}
 						{/* if the screen size is greater than 600px then you can render the navlinks on the right */}
 						<li className="notButton">
-							<Link to="/watchlist">Watchlist</Link>{" "}
+							<Link to="/watchlist">Watchlist</Link>
 							{/* link to the watchlist page */}
 						</li>
 						<li>
 							<Link to="/signup">
-								{" "}
 								{/* get a button to link to the signup page */}
 								<Button
 									className="NavbarSignUpButton"

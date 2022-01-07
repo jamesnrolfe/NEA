@@ -12,6 +12,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // pages
 import Homepage from "./pages/homepage";
+import LoginPage from "./pages/loginpage";
+import SignUpPage from "./pages/signuppage";
 
 // navbar
 import Navbar from "./components/large/navbar";
@@ -31,8 +33,10 @@ const App = () => {
 		<Router>
 			<Navbar switchTheme={switchTheme} />
 			<Routes>
-				<Route path="/" exact component={Homepage} />
+				<Route path="/" exact element={<Homepage />} />
 				{/* home page here on the default url */}
+				<Route path="/login" element={<LoginPage />} />
+				<Route path="/signup" element={<SignUpPage />} />
 			</Routes>
 		</Router>
 	);

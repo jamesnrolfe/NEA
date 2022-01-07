@@ -1,0 +1,17 @@
+.Card {
+	border-radius: 6px;
+	margin: auto;
+	padding: 2.5%;
+	background-color: var(--card-2);
+	background-image: linear-gradient(to bottom right, var(--card-1), var(--card-2));
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.Card.accent {
+	background-color: var(--accent-1);
+}
+
+.Card.fitcontent {
+	width: fit-content;
+	height: fit-content;
+}
