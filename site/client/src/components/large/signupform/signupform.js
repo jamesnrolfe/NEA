@@ -1,3 +1,4 @@
+import React from "react";
 import "./signupform.scss";
 import Card from "../../small/card";
 import Button from "../../small/button";
@@ -8,7 +9,7 @@ const SignUpForm = (props) => {
 			className={`SignUpForm ${props.didMount}`}
 			innerHTML={
 				// with the fiollowing data inside
-				<>
+				<React.Fragment>
 					<div className="Title">{props.title}</div>
 					{/* what is our field going to be called so that the user can see what they are doing */}
 					{props.fields.map((field, i) => {
@@ -48,7 +49,7 @@ const SignUpForm = (props) => {
 					<div className={`Alert ${props.alertType}`}>{props.alert}</div>{" "}
 					{/* an alert at the bottom for anything that the user needs
                     to know that isnt a format error, i.e. "that username is already taken" */}
-				</>
+				</React.Fragment>
 			}
 		/>
 	);

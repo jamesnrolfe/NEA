@@ -1,3 +1,5 @@
+import React from "react";
+
 import "./navbar.scss"; // import the css file
 import Sidebar from "../sidebar"; // we render the sidebar from this component, so we
 // need to import that
@@ -11,11 +13,9 @@ const Navbar = (props) => {
 
 	return (
 		<div className="Navbar">
-			{" "}
 			{/* a whole container */}
 			<ul className="NavLeft">
 				<li className="MenuButton">
-					{" "}
 					{/* a menu button that is just a burger bar, thats what the 
                 svg is */}
 					<svg
@@ -29,7 +29,6 @@ const Navbar = (props) => {
 					</svg>
 				</li>
 				<Link to="/">
-					{" "}
 					{/* the logo will link back to the homepage, which doesn't have a path as such */}
 					<li className="Logo">LOGO HERE</li>
 				</Link>
@@ -37,17 +36,14 @@ const Navbar = (props) => {
 			<Media
 				query="(min-width: 800px)"
 				render={() => (
-					<>
-						<div className="SearchBar">
-							{" "}
-							{/* if the width is greater than 800px then you can render the search bar,
+					<div className="SearchBar">
+						{/* if the width is greater than 800px then you can render the search bar,
                         since there will be enough space */}
-							<FiSearch />
-							<input type="text" placeholder="Search for movies..." />{" "}
-							{/* placeholder just fills the searchbar with 
+						<FiSearch />
+						<input type="text" placeholder="Search for movies..." />{" "}
+						{/* placeholder just fills the searchbar with 
                             some text if nothing is typed in yet */}
-						</div>
-					</>
+					</div>
 				)}
 			/>
 			<Media

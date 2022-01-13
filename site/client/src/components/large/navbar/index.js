@@ -1,3 +1,5 @@
+import React from "react";
+
 import Navbar from "./navbar";
 import { useState } from "react"; // so that we can toggle the sidebar from the navbar, which we will need
 // to do to open it

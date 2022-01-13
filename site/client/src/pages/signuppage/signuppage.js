@@ -1,3 +1,5 @@
+import React from "react";
+
 import SignUpForm from "../../components/large/signupform";
 import "./signuppage.scss";
 import { Link } from "react-router-dom";

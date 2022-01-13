@@ -1,3 +1,5 @@
+import React from "react";
+
 import { MdSettings, MdHome } from "react-icons/md";
 import { CgLogIn } from "react-icons/cg";
 import { FiSearch } from "react-icons/fi";

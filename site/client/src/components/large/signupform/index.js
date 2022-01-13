@@ -1,3 +1,4 @@
+import React from "react";
 import SignUpForm from "./signupform";
 import { useState, useEffect, useCallback } from "react";
 import { Validation } from "../../../constants/validation"; // import our rules for use

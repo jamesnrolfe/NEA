@@ -1,3 +1,5 @@
+import React from "react";
+
 import SignUpPage from "./signuppage";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

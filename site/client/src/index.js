@@ -1,3 +1,5 @@
+import React from "react";
+
 import ReactDOM from "react-dom";
 // necessary to use react - allows it to be rendered. Since every file is a child to this one, no
 // other files need to do this really.

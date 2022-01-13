@@ -1,3 +1,5 @@
+import React from "react";
+
 import Sidebar from "./sidebar"; // import the visual element
 
 const SidebarContainer = (props) => {

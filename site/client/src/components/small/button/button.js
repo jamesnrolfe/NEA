@@ -1,3 +1,5 @@
+import React from "react";
+
 import "./button.scss"; // import the css file
 
 const Button = (props) => {
