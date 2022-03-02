@@ -7,29 +7,30 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { SignUpFields } from "../../constants/accountdata";
 
-const SignUpPage = (props) => {
-	const [didMount, setDidMount] = useState(false);
+const SignUpPage = props => {
+    const [didMount, setDidMount] = useState(false);
 
-	useEffect(() => {
-		setDidMount(true);
-	}, []);
+    useEffect(() => {
+        setDidMount(true); // animations
+    }, []);
 
-	return (
-		<div className="SignUpPage">
-			<SignUpForm
-				title="Sign up"
-				type="signup"
-				fields={SignUpFields}
-				submitAction={props.submitAction}
-				message={props.message}
-				error={props.error}
-				didMount={didMount ? "mounted" : ""}
-			/>
-			<Link className={`SwapForm ${didMount ? "mounted" : ""}`} to="/login">
-				<div>Have an account? Log in instead</div>
-			</Link>
-		</div>
-	);
+    return (
+        <div className="SignUpPage">
+            <SignUpForm
+                title="Sign up"
+                type="signup"
+                fields={SignUpFields}
+                submitAction={props.submitAction}
+                message={props.message}
+                error={props.error}
+                didMount={didMount ? "mounted" : ""}
+            />
+            <Link className={`SwapForm ${didMount ? "mounted" : ""}`} to="/login">
+                <div>Have an account? Log in instead</div>
+                {/* allows us to swap to the login page */}
+            </Link>
+        </div>
+    );
 };
 
 export default SignUpPage;

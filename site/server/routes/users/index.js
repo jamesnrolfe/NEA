@@ -18,4 +18,7 @@ router.use("/update", updateUser);
 const getUser = require("./get_users");
 router.use("/get", getUser);
 
+const verifyUser = require("./verify_user");
+router.use("/verify", verifyUser);
+
 module.exports = router;
