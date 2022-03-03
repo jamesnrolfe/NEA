@@ -55,15 +55,25 @@ const Navbar = props => {
                             {/* link to the watchlist page */}
                         </li>
                         <li>
-                            <Link to="/signup">
-                                {/* get a button to link to the signup page */}
+                            {props.showSignUpButton ? (
+                                <Link to="/signup">
+                                    {/* get a button to link to the signup page */}
+                                    <Button
+                                        className="NavbarSignUpButton"
+                                        value="Sign up"
+                                        color="accent"
+                                        size="medium"
+                                    />
+                                </Link>
+                            ) : (
                                 <Button
                                     className="NavbarSignUpButton"
-                                    value="Sign up"
-                                    color="accent"
+                                    value="Sign out"
+                                    color="default"
                                     size="medium"
+                                    onClick={props.signOut}
                                 />
-                            </Link>
+                            )}
                         </li>
                     </ul>
                 )}
