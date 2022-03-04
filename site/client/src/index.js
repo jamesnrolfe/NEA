@@ -25,35 +25,35 @@ import SignUpPage from "./pages/signuppage";
 // navbar
 import Navbar from "./components/large/navbar";
 
-const store = createStore(
-    rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+export const store = createStore(
+	rootReducer,
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ); // create redux store
 
 const App = () => {
-    // default/base function component
+	// default/base function component
 
-    const [darkTheme, setDarkTheme] = useState(true);
+	const [darkTheme, setDarkTheme] = useState(true);
 
-    const switchTheme = () => {
-        setDarkTheme(!darkTheme);
-        const body = document.querySelector("body");
-        body.className = darkTheme ? "light" : "dark";
-    };
+	const switchTheme = () => {
+		setDarkTheme(!darkTheme);
+		const body = document.querySelector("body");
+		body.className = darkTheme ? "light" : "dark";
+	};
 
-    return (
-        <Provider store={store}>
-            <Router>
-                <Navbar switchTheme={switchTheme} />
-                <Routes>
-                    <Route path="/" exact element={<Homepage />} />
-                    {/* home page here on the default url */}
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/signup" element={<SignUpPage />} />
-                </Routes>
-            </Router>
-        </Provider>
-    );
+	return (
+		<Provider store={store}>
+			<Router>
+				<Navbar switchTheme={switchTheme} />
+				<Routes>
+					<Route path="/" exact element={<Homepage />} />
+					{/* home page here on the default url */}
+					<Route path="/login" element={<LoginPage />} />
+					<Route path="/signup" element={<SignUpPage />} />
+				</Routes>
+			</Router>
+		</Provider>
+	);
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));
