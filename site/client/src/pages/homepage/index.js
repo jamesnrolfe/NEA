@@ -1,42 +1,33 @@
 import React from "react";
-import { generateCorrelations } from "../../processes/create_recommendations";
-import { getMovieDetails } from "../../tmdb/get_movie_details";
+import { updateRecommendations } from "../../processes/recommendations/update_recommendations";
+
 import Button from "../../components/small/button";
 
-import { useSelector, useDispatch } from "react-redux";
-import { addMovieDetails } from "../../redux/actions";
-import { addLinks } from "../../redux/actions";
-import { loadLinks } from "../../processes/load_links";
-
-import { getTMDBId } from "../../processes/return_tmdb_id";
+import { store } from "../..";
+import { useDispatch } from "react-redux";
+import { fetchDetails } from "../../processes/movie_details/add_and_fetch_details";
 
 const Homepage = () => {
 	//
 	const dispatch = useDispatch();
 
 	const makeRecommendations = async () => {
-		generateCorrelations(15).then((correlations) => {
-			console.log(correlations);
+		updateRecommendations(store.getState().user.id).then(() => {
+			const recs = store.getState().recommendations;
+			console.log(recs);
 		});
 	};
 
-	const getDetails = async () => {
-		getMovieDetails(getTMDBId(1)).then((details) => {
-			dispatch(addMovieDetails(details.data));
-		});
-	};
-
-	const loadLink = async () => {
-		loadLinks().then((links) => {
-			dispatch(addLinks(links.data));
+	const _addDetails = (id) => {
+		fetchDetails(102).then((details) => {
+			console.log(details);
 		});
 	};
 
 	return (
 		<div className="HomePage placeholder">
-			<Button value={"make recommendations"} onClick={makeRecommendations} />
-			<Button value={"get details"} onClick={getDetails} />
-			<Button value={"load links"} onClick={loadLink} />
+			<Button value={"make recommendations"} onClick={makeRecommendations} size={"large"} />
+			<Button value={"get details"} onClick={_addDetails} size={"large"} />
 		</div>
 	);
 };

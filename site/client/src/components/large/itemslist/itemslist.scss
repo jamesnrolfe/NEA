@@ -1,0 +1,40 @@
+.ItemsList {
+	display: grid; // use grids
+	width: 90%; // we don't want to to take up the entire screen (or go all the way to the edges)
+	grid: 200px / 47.5% 47.5%; // height of each item is 200px, width is almost half the screen
+	grid-gap: 5%; // bit of a gap between items
+	margin: auto; // center the grid
+	& .Item {
+		display: grid; // each item is also a grid
+		margin: auto;
+		width: 80%;
+		height: 150px;
+		text-align: center; // alighn the text to the center
+		grid-template-areas: // make some template areas
+
+			"img lab"
+			"img data";
+		& img {
+			// center the image
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			// ==================
+			grid-area: img; // put this in the img template area
+			height: 150px;
+		}
+		& .label {
+			grid-area: lab; // put this in the lab template area
+		}
+		& .datapiece {
+			grid-area: data; // put this in the data template area
+		}
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	// if we are below 600px
+	.ItemsList {
+		grid: 200px / 95%;
+	}
+}

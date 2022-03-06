@@ -11,7 +11,7 @@ export const removeUser = () => {
 	};
 };
 
-export const updateRecommendations = (recommendations) => {
+export const modifyRecommendations = (recommendations) => {
 	return {
 		type: "UPDATERECS",
 		payload: recommendations,

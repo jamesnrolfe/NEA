@@ -1,0 +1,30 @@
+.RecommendationsPage {
+	display: grid; // grid display
+	grid-template-areas: // the grid areas, very simple
+
+		"title"
+		"buttons"
+		"recs";
+	grid-gap: 10px; // small constant gap
+	& .Title {
+		grid-area: title; // give it title grid area
+		padding-top: 20px; // some small padding so it doesn't touch the edge of the page
+		padding-left: 20px;
+		font-size: var(--font-large); // large font
+	}
+
+	& .ItemsList {
+		height: fit-content; // fit the items list height
+		grid-area: recs; // give it recs grid area
+		padding-bottom: 250px; // add some space at the bottom of the page
+	}
+
+	& .ChangeButtons {
+		grid-area: buttons; // give it buttons grid area
+		margin: auto; // center
+		& .Button {
+			margin-left: 40px; // separate the buttons
+			margin-right: 40px;
+		}
+	}
+}
