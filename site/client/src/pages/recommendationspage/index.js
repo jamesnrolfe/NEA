@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { updateRecommendations } from "../../processes/recommendations/update_recommendations";
@@ -8,6 +8,7 @@ import { fetchDetails } from "../../processes/movie_details/add_and_fetch_detail
 import { store } from "../..";
 
 import { RecommendationsPage } from "./recommendationspage";
+import Button from "../../components/small/button/button";
 
 const RecommendationsPageContainer = () => {
 	const [recommendations, setRecommendations] = useState([]);
@@ -45,11 +46,17 @@ const RecommendationsPageContainer = () => {
 									((rec.score / bestScore) * 100).toFixed(0).toString() +
 									"% match",
 							};
-							formattedRecs.push(formattedRec);
+							// error here is likely due to different fetch times
+							// just do another sort of the data
+							setRecommendations((recommendations) => [
+								...recommendations,
+								formattedRec,
+							]);
 						});
 					});
-
-					setRecommendations(formattedRecs);
+					// .then(() => {
+					// 	setRecommendations(formattedRecs);
+					// });
 				});
 			}
 		};
@@ -74,11 +81,15 @@ const RecommendationsPageContainer = () => {
 
 	return (
 		<React.Fragment>
-			<RecommendationsPage
-				recommendations={getSlice()}
-				decreaseHead={decreaseHead}
-				increaseHead={increaseHead}
-			/>
+			{recommendations.length > 0 ? (
+				<RecommendationsPage
+					recommendations={getSlice()}
+					decreaseHead={decreaseHead}
+					increaseHead={increaseHead}
+				/>
+			) : (
+				<div>Loading...</div>
+			)}
 		</React.Fragment>
 	);
 };
