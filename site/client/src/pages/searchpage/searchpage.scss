@@ -1,0 +1,61 @@
+.SearchPage {
+	display: grid; // grid display
+	grid-template-areas: // the grid areas, very simple
+
+		"search"
+		"buttons"
+		"results";
+	grid-gap: 20px; // small constant gap
+
+	& .SearchBar {
+		grid-area: search;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 80%; // we don't want it taking up all the space, come on now
+		margin: auto;
+		& input {
+			background-color: var(--dark-1);
+			border: 0;
+			border-bottom: 2px solid var(--accent-1);
+			padding: 0.7rem;
+			font-size: 25px;
+			width: 100%;
+			height: 50px;
+			color: var(--light-1);
+			transition: all 0.25s;
+			&:focus {
+				outline: none;
+				border-color: var(--accent-2);
+			}
+			&:hover {
+				color: var(--light-2);
+				cursor: pointer;
+			}
+		}
+		& svg {
+			color: var(--accent-1);
+			transition: all 0.25s;
+			height: 25px;
+			width: 25px;
+			&:hover {
+				color: var(--accent-2);
+				cursor: pointer;
+			}
+		}
+	}
+	& .ChangeButtons {
+		grid-area: buttons; // give it buttons grid area
+		margin: auto; // center
+		& .Button {
+			margin-left: 40px; // separate the buttons
+			margin-right: 40px;
+		}
+	}
+
+	& .ItemsList {
+		height: fit-content; // fit the items list height
+		grid-area: results; // give it recs grid area
+		padding-bottom: 250px; // add some space at the bottom of the page
+	}
+}

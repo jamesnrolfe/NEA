@@ -59,38 +59,37 @@
 			margin-right: 5%; // we don't want items right up against each other
 		}
 	}
-}
+	& .SearchBar {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 40%; // we don't want it taking up all the space, come on now
 
-.SearchBar {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 40%; // we don't want it taking up all the space, come on now
-
-	& input {
-		background-color: var(--dark-1);
-		border: 0;
-		border-bottom: 2px solid var(--accent-1);
-		padding: 0.7rem;
-		font-size: 15px;
-		width: 20rem;
-		color: var(--light-1);
-		transition: all 0.25s;
-		&:focus {
-			outline: none;
-			width: 22rem;
+		& input {
+			background-color: var(--dark-1);
+			border: 0;
+			border-bottom: 2px solid var(--accent-1);
+			padding: 0.7rem;
+			font-size: 15px;
+			width: 20rem;
+			color: var(--light-1);
+			transition: all 0.25s;
+			&:focus {
+				outline: none;
+				width: 22rem;
+			}
+			&:hover {
+				color: var(--light-2);
+				cursor: pointer;
+			}
 		}
-		&:hover {
-			color: var(--light-2);
-			cursor: pointer;
-		}
-	}
-	& svg {
-		color: var(--accent-1);
-		transition: all 0.25s;
-		&:hover {
-			color: var(--accent-2);
-			cursor: pointer;
+		& svg {
+			color: var(--accent-1);
+			transition: all 0.25s;
+			&:hover {
+				color: var(--accent-2);
+				cursor: pointer;
+			}
 		}
 	}
 }

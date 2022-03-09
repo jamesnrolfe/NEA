@@ -12,6 +12,7 @@ import Button from "../../components/small/button/button";
 
 const RecommendationsPageContainer = () => {
 	const [recommendations, setRecommendations] = useState([]);
+	const [output, setOutput] = useState([]);
 	let [head, setHead] = useState(0);
 
 	const navigate = useNavigate();
@@ -29,39 +30,35 @@ const RecommendationsPageContainer = () => {
 			if (store.getState().user) {
 				// if the user is signed in
 				updateRecommendations(store.getState().user.id).then((newRecs) => {
-					// generate the recommendations for the current user
-					const bestScore = newRecs[0].score;
-					let formattedRecs = [];
-					newRecs.forEach((rec) => {
-						// for all of our recommendations we need certain data to be displayed
-						// we want:
-						// - title
-						// - score as a percentage of best score
-						// - poster path
-						fetchDetails(rec.movie_id).then((details) => {
-							const formattedRec = {
-								label: details.title,
-								picture: "https://image.tmdb.org/t/p/w500" + details.poster_path,
-								datapiece:
-									((rec.score / bestScore) * 100).toFixed(0).toString() +
-									"% match",
-							};
-							// error here is likely due to different fetch times
-							// just do another sort of the data
-							setRecommendations((recommendations) => [
-								...recommendations,
-								formattedRec,
-							]);
-						});
-					});
-					// .then(() => {
-					// 	setRecommendations(formattedRecs);
-					// });
+					setRecommendations(newRecs); // just set them initally
 				});
 			}
 		};
 		addRecs(); // call the function
 	}, []);
+
+	useEffect(() => {
+		setOutput([]); // reset the output
+		if (recommendations.length > 0) {
+			// if the recommendations are actually loaded
+			const shownRecs = recommendations.slice(head, head + 10); // we only want to see 10 at a time
+			const bestScore = recommendations[0].score; // save the best score
+			shownRecs.forEach(async (rec) => {
+				// for every recommendation on the screen
+				fetchDetails(rec.movie_id).then((details) => {
+					// find the details for it
+					const formattedResult = {
+						label: details.title,
+						picture: "https://image.tmdb.org/t/p/w500" + details.poster_path,
+						datapiece:
+							((rec.score / bestScore) * 100).toFixed(0).toString() + "% match", // give the recommendation score
+						// as a percentage of the best score (to 0 d.p.)
+					};
+					setOutput((output) => [...output, formattedResult]); // append it to the output
+				});
+			});
+		}
+	}, [recommendations, head]); // we only want this to run when recommendations and head are updated
 
 	const increaseHead = () => {
 		if (recommendations.length >= head) {
@@ -75,20 +72,18 @@ const RecommendationsPageContainer = () => {
 		}
 	};
 
-	const getSlice = () => {
-		return recommendations.slice(head, head + 10);
-	};
-
 	return (
 		<React.Fragment>
-			{recommendations.length > 0 ? (
+			{recommendations.length > 0 ? ( // are we loaded?
 				<RecommendationsPage
-					recommendations={getSlice()}
+					recommendations={output}
 					decreaseHead={decreaseHead}
 					increaseHead={increaseHead}
+					head={head}
+					reclength={recommendations.length}
 				/>
 			) : (
-				<div>Loading...</div>
+				<div>Loading...</div> // if we aren't loaded, show a simple loading screen
 			)}
 		</React.Fragment>
 	);

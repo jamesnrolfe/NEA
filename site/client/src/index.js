@@ -18,7 +18,7 @@ import { Provider } from "react-redux";
 import rootReducer from "./redux/reducers";
 
 // links
-import { loadLinks } from "./processes/load_links";
+import { loadLinks } from "./processes/other/load_links";
 import { addLinks } from "./redux/actions";
 
 // pages
@@ -26,6 +26,7 @@ import Homepage from "./pages/homepage";
 import LoginPage from "./pages/loginpage";
 import SignUpPage from "./pages/signuppage";
 import RecommendationsPage from "./pages/recommendationspage";
+import SearchPage from "./pages/searchpage";
 
 // navbar
 import Navbar from "./components/large/navbar";
@@ -62,6 +63,7 @@ const App = () => {
 					<Route path="/login" element={<LoginPage />} />
 					<Route path="/signup" element={<SignUpPage />} />
 					<Route path="/recommendations" element={<RecommendationsPage />} />
+					<Route path="/search" element={<SearchPage />} />{" "}
 				</Routes>
 			</Router>
 		</Provider>

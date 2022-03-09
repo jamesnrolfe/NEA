@@ -14,8 +14,6 @@ const ItemsListContainer = (props) => {
 	let [data, setData] = useState([]);
 
 	useEffect(() => {
-		console.log("recommendations have changed!");
-		console.log(props.data);
 		setData(props.data);
 	}, [props.data, setData]);
 
