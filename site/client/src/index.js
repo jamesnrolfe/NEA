@@ -12,10 +12,9 @@ import "./theme.scss";
 // router tools
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// redux
-import { createStore } from "redux";
+// store
+import { store } from "./store";
 import { Provider } from "react-redux";
-import rootReducer from "./redux/reducers";
 
 // links
 import { loadLinks } from "./processes/other/load_links";
@@ -27,27 +26,21 @@ import LoginPage from "./pages/loginpage";
 import SignUpPage from "./pages/signuppage";
 import RecommendationsPage from "./pages/recommendationspage";
 import SearchPage from "./pages/searchpage";
+import InfoPage from "./pages/infopage";
 
 // navbar
 import Navbar from "./components/large/navbar";
-
-export const store = createStore(
-	rootReducer,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // just a testing extension
-); // create redux store
 
 const App = () => {
 	// default/base function component
 
 	const [darkTheme, setDarkTheme] = useState(true);
 
-	const body = document.querySelector("body");
-	body.className = "dark";
-
 	const switchTheme = () => {
+		const dark = darkTheme;
 		setDarkTheme(!darkTheme);
 		const body = document.querySelector("body");
-		body.className = darkTheme ? "light" : "dark";
+		body.className = dark ? "light" : "dark";
 	};
 
 	return (
@@ -63,7 +56,8 @@ const App = () => {
 					<Route path="/login" element={<LoginPage />} />
 					<Route path="/signup" element={<SignUpPage />} />
 					<Route path="/recommendations" element={<RecommendationsPage />} />
-					<Route path="/search" element={<SearchPage />} />{" "}
+					<Route path="/search" element={<SearchPage />} />
+					<Route path="/info" element={<InfoPage />} />
 				</Routes>
 			</Router>
 		</Provider>

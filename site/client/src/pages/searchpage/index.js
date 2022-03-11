@@ -33,6 +33,7 @@ const SearchPageContainer = (props) => {
 			fetchDetails(title.movie_id).then((details) => {
 				// for each movie we want label, picture, datapiece (here popularity)
 				const formattedResult = {
+					id: title.movie_id,
 					label: title.title,
 					picture: "https://image.tmdb.org/t/p/w500" + details.poster_path,
 					datapiece: details.popularity.toFixed(0) + " popularity score",

@@ -3,7 +3,7 @@ const router = express.Router();
 const con = require("../../connection");
 
 router.post("/", (req, res) => {
-	const id = req.body.movie_id;
+	const id = req.body.id;
 	// we need to define our arrays. We could do this later, but I find it nice to do it early
 	let ratings = [];
 	let numRatings;
@@ -40,7 +40,11 @@ router.post("/", (req, res) => {
 			// for all of the ratings
 			totalRating += x; // add the rating to the counter
 		});
-		avgRating = (totalRating / numRatings).toFixed(1); // toFixed rounds to 1 d.p.
+		if (numRatings != 0) {
+			avgRating = (totalRating / numRatings).toFixed(1); // toFixed rounds to 1 d.p.
+		} else {
+			avgRating = 0;
+		}
 	};
 
 	const getReviews = () => {

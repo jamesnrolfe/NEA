@@ -8,7 +8,7 @@ export const generateRecommendations = async (user_id) => {
 		// i.e. it knows it can wait for the data
 		axios
 			.post("http://localhost:3001/api/reviews_and_ratings/get", {
-				getByMovie: false,
+				get_by_movie: false,
 				id: user_id,
 			}) // firstly we get the user ratings
 			.then((ratings) => {

@@ -22,6 +22,7 @@
 			// ==================
 			grid-area: img; // put this in the img template area
 			height: 150px;
+			border-radius: 5px;
 		}
 		& .label {
 			grid-area: lab; // put this in the lab template area
@@ -29,6 +30,10 @@
 		& .datapiece {
 			grid-area: data; // put this in the data template area
 		}
+	}
+	& a {
+		color: var(--light-1);
+		text-decoration: none;
 	}
 }
 

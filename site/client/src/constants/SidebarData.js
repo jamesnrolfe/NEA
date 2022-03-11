@@ -33,12 +33,6 @@ export const SidebarData = [
 		cName: "sidebar-text",
 	},
 	{
-		title: "Login",
-		path: "/login",
-		icon: <CgLogIn />,
-		cName: "sidebar-text",
-	},
-	{
 		title: "Settings",
 		path: "/settings",
 		icon: <MdSettings />,

@@ -1,4 +1,4 @@
-import { store } from "../../index";
+import { store } from "../../store";
 import { modifyRecommendations } from "../../redux/actions";
 import { generateRecommendations } from "./create_recommendations";
 

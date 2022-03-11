@@ -1,0 +1,161 @@
+.InfoPage {
+	width: 90%; // don't extend all the way to the end
+	padding-top: 20px;
+	margin: auto; // center the div
+	display: grid;
+	grid-template-areas:
+		"poster title revbutton"
+		"poster desc desc"
+		"poster details details"
+		"revdata revdata revdata"
+		"reviews reviews reviews";
+	grid-gap: 25px; // some gap between the items in the grid
+
+	svg {
+		color: var(--accent-2);
+	}
+
+	& .Title {
+		grid-area: title;
+		font-size: var(--font-large); // title font
+		height: fit-content; // so we can center it
+		margin-top: auto; // center it on the top...
+		margin-bottom: auto; // ... and bottom
+	}
+
+	& .ReviewButton {
+		grid-area: revbutton;
+		width: 40%;
+		margin: auto;
+		vertical-align: middle;
+	}
+
+	& .Poster {
+		grid-area: poster;
+		height: 400px; // not too big
+		border-radius: 10px;
+	}
+
+	& .Description {
+		grid-area: desc;
+		height: fit-content;
+	}
+
+	& .MovieData {
+		grid-area: details;
+		width: 100%; // fit the whole section
+		height: 75%; // we don't want to to be too intrusivef
+		& .MovieDataTable {
+			height: 100%;
+			display: grid; // this is another grid
+		}
+	}
+
+	& .ReviewData {
+		display: grid;
+		grid-template-areas:
+			"ur_avg"
+			"ur_rev";
+		width: 80%;
+		grid-area: revdata;
+		& .UserRatingHeader {
+			& .Title {
+				font-weight: 300;
+			}
+			& .Stars {
+				display: flex;
+			}
+		}
+		& .AverageRating {
+			grid-area: ur_avg;
+		}
+		& .ReviewGraph {
+			grid-area: ur_rev;
+			& .bar {
+				display: grid;
+				grid-template-areas: "lab bar perc";
+				grid-gap: 3%;
+				grid-template-columns: 15% 70%;
+				float: left;
+				width: 100%;
+				height: 13px;
+				margin: 8px 0;
+				& .label {
+					text-align: right;
+				}
+				& .bar-container {
+					border-radius: 5px;
+					width: 100%;
+					height: 100%;
+					background-color: var(--dark-3);
+					& .bar-data {
+						border-radius: 5px;
+						height: 100%;
+						background-color: var(--accent-1);
+					}
+				}
+			}
+		}
+	}
+
+	& .Reviews {
+		grid-area: reviews;
+		display: flex;
+		flex-direction: column;
+		& .Review {
+			margin-bottom: 20px;
+			width: 80%;
+			& .ReviewTable {
+				display: grid;
+				grid-template-areas:
+					"head rat"
+					"uname rat"
+					"body body";
+				& .User {
+					font-size: var(--font-small);
+					grid-area: uname;
+					padding-bottom: 5px;
+				}
+				& .Rating {
+					text-align: right;
+					grid-area: rat;
+				}
+				& .Head {
+					grid-area: head;
+					font-style: italic;
+				}
+				& .Body {
+					grid-area: body;
+					font-size: var(--font-small);
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	// if we are below 800px
+	.InfoPage {
+		// we want to change the layout slightly
+		grid-template-areas:
+			"title"
+			"poster"
+			"desc"
+			"details"
+			"revbutton"
+			"revdata"
+			"reviews";
+
+		& .Title {
+			text-align: center;
+		}
+		& .Poster {
+			height: 300px;
+			margin: auto;
+		}
+		& .Stars {
+			margin: auto;
+			width: fit-content;
+		}
+	}
+}

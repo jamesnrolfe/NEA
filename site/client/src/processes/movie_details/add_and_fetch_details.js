@@ -1,6 +1,6 @@
 import { getMovieDetails } from "./get_movie_details";
 import { getTMDBId } from "../tmdb/return_tmdb_id";
-import { store } from "../../index";
+import { store } from "../../store";
 import { addMovieDetails } from "../../redux/actions";
 
 export const fetchDetails = async (id) => {
@@ -19,7 +19,7 @@ export const fetchDetails = async (id) => {
 		if (insert) {
 			const tmdb_id = getTMDBId(id);
 			getMovieDetails(tmdb_id).then((details) => {
-				console.log("sending request to API");
+				console.log("Sending request to API...");
 				const newDetails = {
 					id: id,
 					tmdb_id: details.data.id,

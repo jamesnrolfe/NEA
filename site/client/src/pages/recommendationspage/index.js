@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { updateRecommendations } from "../../processes/recommendations/update_recommendations";
 import { fetchDetails } from "../../processes/movie_details/add_and_fetch_details";
 
-import { store } from "../..";
+import { store } from "../../store";
 
 import { RecommendationsPage } from "./recommendationspage";
 import Button from "../../components/small/button/button";
@@ -48,6 +48,7 @@ const RecommendationsPageContainer = () => {
 				fetchDetails(rec.movie_id).then((details) => {
 					// find the details for it
 					const formattedResult = {
+						id: rec.movie_id,
 						label: details.title,
 						picture: "https://image.tmdb.org/t/p/w500" + details.poster_path,
 						datapiece:
