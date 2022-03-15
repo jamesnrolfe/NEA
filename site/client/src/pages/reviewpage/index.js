@@ -76,17 +76,20 @@ const ReviewPageContainer = () => {
         }));
     };
 
-    const submitValues = () => {
+    const submitValues = async () => {
         if (verify(reviewData)) {
             // if we are allowed to submit
             if (update) {
                 // if we are updating a review
-                updateReview(store.getState().user.id, id, reviewData);
+                updateReview(store.getState().user.id, id, reviewData).then(() => {
+                    navigate("/info?id=" + id); // now take us back to that movie info page
+                });
             } else {
                 // otherwise we are adding a new one
-                addReview(store.getState().user.id, id, reviewData);
+                addReview(store.getState().user.id, id, reviewData).then(() => {
+                    navigate("/info?id=" + id); // now take us back to that movie info page
+                });
             }
-            navigate("/info?id=" + id); // now take us back to that movie info page
         } else {
             console.log("invalid"); // this should never really happen since the button
             // isnt active unless stuff is working
@@ -103,9 +106,10 @@ const ReviewPageContainer = () => {
         return valid;
     };
 
-    const handleDelete = () => {
-        deleteReview(store.getState().user.id, id); // delete the review
-        navigate("/info?id=" + id); // now take us back to that movie info page
+    const handleDelete = async () => {
+        deleteReview(store.getState().user.id, id).then(() => {
+            navigate("/info?id=" + id); // now take us back to that movie info page
+        }); // delete the review
     };
 
     return (
@@ -118,7 +122,7 @@ const ReviewPageContainer = () => {
             onSubmit={submitValues}
             onDelete={handleDelete}
             currentRating={reviewData.rating}
-            isThereARating={reviewData.rating === 0 ? true : false} // if we have a rating, return true
+            isThereARating={reviewData.rating === 0 ? false : true} // if we have a rating, return true
             // otherwise we dont
             headlength={reviewData.head ? reviewData.head.length : 0} // the length of the head
             bodylength={reviewData.body ? reviewData.body.length : 0} // the length of the body
