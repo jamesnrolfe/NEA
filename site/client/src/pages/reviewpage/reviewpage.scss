@@ -1,0 +1,131 @@
+.ReviewPage {
+    padding-top: 20px; // don't touch the navbar
+    display: grid; // grid display
+    grid-gap: 20px; // some spreading of data
+    margin: auto; // center
+    width: 90%; // dont go all the way to the edge
+    grid-template-areas: // set the areas we are going to use
+
+        "stars"
+        "head"
+        "body"
+        "submit";
+    & .Stars {
+        grid-area: stars;
+        margin-left: auto; // center horizontally
+        margin-right: auto;
+        height: 50px;
+        width: 80%;
+        max-width: 1000px;
+        display: flex; // get the stars to appear in line
+        flex-direction: row; // flow in the column
+        & .star {
+            height: 100%;
+            width: 20%;
+            &:hover {
+                cursor: pointer;
+                color: var(--accent-2);
+            }
+            & svg {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+
+    & .Head {
+        display: flex;
+        flex-direction: column; // flow in the column direction
+        grid-area: head;
+        & input {
+            background-color: transparent; // see through to the background
+            border: 0; // no border except...
+            border-bottom: 2px solid var(--accent-2); // we only want a border on the bottom
+            padding: 0.7em;
+            font-size: var(--font-def);
+            font-weight: 500;
+            color: var(--light-1);
+            width: 60%; // not as wide as the whole thing
+            &:focus {
+                // when clicked on
+                outline: none; // we dont want an ugly default css input border
+                border-color: var(
+                    --accent-2
+                ); // instead slightly modify the border colour which is only on the bottom
+            }
+        }
+        & .lettercount {
+            padding-top: 5px;
+            font-size: var(--font-small);
+            color: var(--accent-2);
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        &.error {
+            // if we have an error
+            & input {
+                border-color: red; // change the border colour to red
+            }
+            & .lettercount {
+                color: red; // and the letter count colour to red
+                // to make clear that this is the cause
+            }
+        }
+    }
+    & .Body {
+        grid-area: body;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        & textarea {
+            background-color: transparent; // just like the input, we want no outline
+            border: 0; // no border except...
+            border-bottom: 2px solid var(--accent-2);
+            resize: none; // we don't want the user to be able to resize it
+            color: var(--light-1);
+            padding: 0.7em;
+            font-size: var(--font-def);
+            width: 90%;
+            height: 100px;
+            font-family: var(--font-1); // for some reason you have to redefine the font
+            // in a textarea
+            &:focus {
+                // when clicked on
+                outline: none; // we dont want an ugly default css input border
+                border-color: var(
+                    --accent-2
+                ); // instead slightly modify the border colour which is only on the bottom
+            }
+        }
+        & .lettercount {
+            padding-top: 5px;
+            font-size: var(--font-small);
+            color: var(--accent-2);
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        &.error {
+            // if we have an error
+            & input {
+                border-color: red; // change the border colour to red
+            }
+            & .lettercount {
+                color: red; // and the letter count colour to red
+                // to make clear that this is the cause
+            }
+        }
+    }
+
+    & .Submit {
+        grid-area: submit;
+    }
+    & .Delete {
+        & svg {
+            &:hover {
+                // if we hover, change the colour
+                cursor: pointer;
+                color: var(--accent-1);
+            }
+        }
+    }
+}

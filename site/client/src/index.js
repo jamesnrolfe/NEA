@@ -27,47 +27,49 @@ import SignUpPage from "./pages/signuppage";
 import RecommendationsPage from "./pages/recommendationspage";
 import SearchPage from "./pages/searchpage";
 import InfoPage from "./pages/infopage";
+import ReviewPage from "./pages/reviewpage";
 
 // navbar
 import Navbar from "./components/large/navbar";
 
 const App = () => {
-	// default/base function component
+    // default/base function component
 
-	const [darkTheme, setDarkTheme] = useState(true);
+    const [darkTheme, setDarkTheme] = useState(true);
 
-	const switchTheme = () => {
-		const dark = darkTheme;
-		setDarkTheme(!darkTheme);
-		const body = document.querySelector("body");
-		body.className = dark ? "light" : "dark";
-	};
+    const switchTheme = () => {
+        const dark = darkTheme;
+        setDarkTheme(!darkTheme);
+        const body = document.querySelector("body");
+        body.className = dark ? "light" : "dark";
+    };
 
-	return (
-		<Provider store={store}>
-			{/* allow the store to work */}
-			<Router>
-				{/* react router, allows switching between pages */}
-				<Navbar switchTheme={switchTheme} />
-				<Routes>
-					{/* all the different pages */}
-					<Route path="/" exact element={<Homepage />} />
-					{/* home page here on the default url */}
-					<Route path="/login" element={<LoginPage />} />
-					<Route path="/signup" element={<SignUpPage />} />
-					<Route path="/recommendations" element={<RecommendationsPage />} />
-					<Route path="/search" element={<SearchPage />} />
-					<Route path="/info" element={<InfoPage />} />
-				</Routes>
-			</Router>
-		</Provider>
-	);
+    return (
+        <Provider store={store}>
+            {/* allow the store to work */}
+            <Router>
+                {/* react router, allows switching between pages */}
+                <Navbar switchTheme={switchTheme} />
+                <Routes>
+                    {/* all the different pages */}
+                    <Route path="/" exact element={<Homepage />} />
+                    {/* home page here on the default url */}
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/signup" element={<SignUpPage />} />
+                    <Route path="/recommendations" element={<RecommendationsPage />} />
+                    <Route path="/search" element={<SearchPage />} />
+                    <Route path="/info" element={<InfoPage />} />
+                    <Route path="/review" element={<ReviewPage />} />
+                </Routes>
+            </Router>
+        </Provider>
+    );
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
 window.onload = function () {
-	loadLinks().then((links) => {
-		store.dispatch(addLinks(links.data));
-	});
+    loadLinks().then(links => {
+        store.dispatch(addLinks(links.data));
+    });
 };

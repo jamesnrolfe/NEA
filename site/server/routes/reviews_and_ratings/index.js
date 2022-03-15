@@ -17,4 +17,8 @@ router.use("/update", editReview);
 const getReviews = require("./get_reviews");
 router.use("/get", getReviews);
 
+// get single
+const getReview = require("./get_review");
+router.use("/get_single", getReview);
+
 module.exports = router;
